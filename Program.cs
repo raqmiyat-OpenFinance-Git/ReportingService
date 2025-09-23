@@ -1,3 +1,5 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using ReportingService.Custom;
 using ReportingService.IServices;
@@ -51,10 +53,15 @@ builder.Services.AddSingleton<NLogReportService>();
 builder.Services.AddTransient<ConnectCustom>();
 builder.Services.AddTransient<IReportsService, ReportsService>();
 builder.Services.AddTransient<IDataSharingReportService, DataSharingReportService>();
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.MapHealthChecks("/health", new HealthCheckOptions()
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 app.UseSwagger();
 app.UseSwaggerUI();
 

@@ -36,6 +36,12 @@ builder.Services.AddSingleton<DataSharingDBConnection>(provider =>
     var connStr = SqlConManager.GetConnectionString(config.DataSharingDBConnection!, config.IsEncrypted);
     return new DataSharingDBConnection(connStr);
 });
+builder.Services.AddSingleton<ServiceIntiationDbConnection>(provider =>
+{
+    var config = provider.GetRequiredService<IOptions<DataBaseConnectionParams>>().Value;
+    var connStr = SqlConManager.GetConnectionString(config.ServiceIntiationDBConnection!, config.IsEncrypted);
+    return new ServiceIntiationDbConnection(connStr);
+});
 
 builder.Services.AddCors(options =>
 {
@@ -53,6 +59,7 @@ builder.Services.AddSingleton<NLogReportService>();
 builder.Services.AddTransient<ConnectCustom>();
 builder.Services.AddTransient<IReportsService, ReportsService>();
 builder.Services.AddTransient<IDataSharingReportService, DataSharingReportService>();
+builder.Services.AddTransient<IServiceInitiationReportService, ServiceInitiationReportService>();
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();

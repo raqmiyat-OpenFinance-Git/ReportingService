@@ -4,6 +4,7 @@
     {
         public ConsentSPParams? consentSPParams { get; set; }
         public DataSharingReportParams? dataSharingReportParams { get; set; }
+        public ServiceInitiationReportParams? serviceInitiationReportParams { get; set; }
     }
     public class ConsentSPParams
     {
@@ -24,5 +25,16 @@
         public string? DataSharingReportDeleteTemplate { get; set; }
         public string? SaveDataSharingReportTemplate { get; set; }
         public string? GenerateDataSharingReport { get; set; }
+    }
+
+    public class ServiceInitiationReportParams
+    {
+        public string? ServiceInititaionTemplates { get; set; }
+        public string? ServiceInititaionColumnNames { get; set; }
+        public string? ServiceInititaionTemplateList { get; set; }
+        public string? ServiceInititaionTemplateData { get; set; }
+        public string? ServiceInititaiontDeleteTemplate { get; set; }
+        public string? SaveServiceInititaionReportTemplate { get; set; }
+        public string? GenerateServiceInititaionReport { get; set; }
     }
 }

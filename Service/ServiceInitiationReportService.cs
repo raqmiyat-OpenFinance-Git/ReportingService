@@ -35,14 +35,18 @@ namespace ReportingService.Service
             }
             return reportTemplates;
         }
-        public async Task<List<ColumnInfo>> GetColumnNames()
+        public async Task<List<ColumnInfo>> GetColumnNames(string type)
         {
             List<ColumnInfo> columnInfos = new List<ColumnInfo>();
             try
             {
+                var parameters = new DynamicParameters();
+                parameters.Add("type", type, DbType.String);
+
                 columnInfos = (await _idbConnection.QueryAsync<ColumnInfo>(
                     _storedProcedureParams.Value.serviceInitiationReportParams!.ServiceInititaionColumnNames!,
-                    commandType: CommandType.StoredProcedure)).ToList()!;
+                    parameters,
+                    commandType: CommandType.StoredProcedure)).ToList();
             }
             catch (Exception ex)
             {
@@ -137,17 +141,18 @@ namespace ReportingService.Service
                 parameters.Add("Todate", serviceInitiationReport.serviceInitiationReportFields!.ToDate, DbType.DateTime);
                 parameters.Add("Columndetails", serviceInitiationReport.serviceInitiationReportFields!.ColumnDetails, DbType.String);
                 parameters.Add("TemplateName", serviceInitiationReport.serviceInitiationReportFields!.TemplateName, DbType.String);
+                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.CorrelationId, DbType.String);
                 parameters.Add("ReportName", serviceInitiationReport.serviceInitiationReportFields!.ReportName, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.ConsentId, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.InstructionAmount, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.InstructionCurrency, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.PaymentTransactionId, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.PaymentStatus, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.TppName, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.CreatedOn, DbType.DateTime);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.CreatedBy, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.ModifiedOn, DbType.DateTime);
-                parameters.Add("CorrelationId", serviceInitiationReport.serviceInitiationReportFields!.ModifiedBy, DbType.String);
+                parameters.Add("ConsentId", serviceInitiationReport.serviceInitiationReportFields!.ConsentId, DbType.String);
+                parameters.Add("InstructionAmount", serviceInitiationReport.serviceInitiationReportFields!.InstructionAmount, DbType.String);
+                parameters.Add("InstructionCurrency", serviceInitiationReport.serviceInitiationReportFields!.InstructionCurrency, DbType.String);
+                parameters.Add("PaymentTransactionId", serviceInitiationReport.serviceInitiationReportFields!.PaymentTransactionId, DbType.String);
+                parameters.Add("PaymentStatus", serviceInitiationReport.serviceInitiationReportFields!.PaymentStatus, DbType.String);
+                parameters.Add("PaymentType", serviceInitiationReport.serviceInitiationReportFields!.PaymentType, DbType.String);
+                parameters.Add("PaymentCategory", serviceInitiationReport.serviceInitiationReportFields!.PaymentCategory, DbType.String);
+                parameters.Add("TppName", serviceInitiationReport.serviceInitiationReportFields!.TppName, DbType.String);
+                parameters.Add("CreatedBy", serviceInitiationReport.serviceInitiationReportFields!.CreatedBy, DbType.String);
+                parameters.Add("ModifiedBy", serviceInitiationReport.serviceInitiationReportFields!.ModifiedBy, DbType.String);
                 parameters.Add("Output_Desc", dbType: DbType.String, direction: ParameterDirection.Output, size: 200);
                 _idbConnection.Execute(
            _storedProcedureParams.Value.serviceInitiationReportParams!.SaveServiceInititaionReportTemplate!,
@@ -178,16 +183,16 @@ namespace ReportingService.Service
                 parameters.Add("Columndetails", serviceInitiationReport.ColumnDetails, DbType.String);
                 parameters.Add("TemplateName", serviceInitiationReport.TemplateName, DbType.String);
                 parameters.Add("ReportName", serviceInitiationReport.ReportName, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.ConsentId, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.InstructionAmount, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.InstructionCurrency, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.PaymentTransactionId, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.PaymentStatus, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.TppName, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.CreatedOn, DbType.DateTime);
-                parameters.Add("CorrelationId", serviceInitiationReport.CreatedBy, DbType.String);
-                parameters.Add("CorrelationId", serviceInitiationReport.ModifiedOn, DbType.DateTime);
-                parameters.Add("CorrelationId", serviceInitiationReport.ModifiedBy, DbType.String);
+                parameters.Add("ConsentId", serviceInitiationReport.ConsentId, DbType.String);
+                parameters.Add("InstructionAmount", serviceInitiationReport.InstructionAmount, DbType.String);
+                parameters.Add("InstructionCurrency", serviceInitiationReport.InstructionCurrency, DbType.String);
+                parameters.Add("PaymentTransactionId", serviceInitiationReport.PaymentTransactionId, DbType.String);
+                parameters.Add("PaymentStatus", serviceInitiationReport.PaymentStatus, DbType.String);
+                parameters.Add("PaymentType", serviceInitiationReport.PaymentType, DbType.String);
+                parameters.Add("PaymentCategory", serviceInitiationReport.PaymentCategory, DbType.String);
+                parameters.Add("TppName", serviceInitiationReport.TppName, DbType.String);
+                parameters.Add("CreatedBy", serviceInitiationReport.CreatedBy, DbType.String);
+                parameters.Add("ModifiedBy", serviceInitiationReport.ModifiedBy, DbType.String);
                 parameters.Add("Output_Desc", dbType: DbType.String, direction: ParameterDirection.Output, size: 200);
                 return (await _idbConnection.QueryAsync<dynamic>(
             _storedProcedureParams.Value.serviceInitiationReportParams!.GenerateServiceInititaionReport!,

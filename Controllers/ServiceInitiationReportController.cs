@@ -36,13 +36,13 @@ namespace ReportingService.Controllers
 
         }
         [HttpGet("GetServiceInitiationColumnNames")]
-        public Task<List<ColumnInfo>> GetColumnNames()
+        public Task<List<ColumnInfo>> GetColumnNames(string type)
         {
             _logger.LogInfo("ReportsController", "GetColumnNames", "----------Start----------");
             Task<List<ColumnInfo>> columnInfos = null!;
             try
             {
-                columnInfos = _reports.GetColumnNames();
+                columnInfos = _reports.GetColumnNames(type);
 
             }
             catch (Exception ex)

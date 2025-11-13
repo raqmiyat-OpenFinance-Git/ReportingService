@@ -22,6 +22,8 @@
         public string? InstructionCurrency { get; set; }
         public string? PaymentTransactionId { get; set; }
         public string? PaymentStatus { get; set; }
+        public string? PaymentType { get; set; }
+        public string? PaymentCategory { get; set; }
         public string? TppName { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string? CreatedBy { get; set; }

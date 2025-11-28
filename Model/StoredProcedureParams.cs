@@ -5,6 +5,12 @@
         public ConsentSPParams? consentSPParams { get; set; }
         public DataSharingReportParams? dataSharingReportParams { get; set; }
         public ServiceInitiationReportParams? serviceInitiationReportParams { get; set; }
+
+        public ConsentManagementReportParams? consentManagementReportParams { get; set; }
+        public InstantPaymentTransactionReportParams? instantPaymentTransactionReportParams { get; set; }
+        public ConfirmationPayeeReportParams? confirmationPayeeReportParams { get; set; }
+        public AccountBalanceSummaryReportParams? accountBalanceSummaryReportParams { get; set; }
+        public CustomerProfileReportParams? customerProfileReportParams { get; set; }
     }
     public class ConsentSPParams
     {
@@ -37,4 +43,26 @@
         public string? SaveServiceInititaionReportTemplate { get; set; }
         public string? GenerateServiceInititaionReport { get; set; }
     }
+
+    public class ConsentManagementReportParams
+    {
+        public string? GetConsentManagementReport { get; set; }
+    }
+    public class InstantPaymentTransactionReportParams
+    {
+        public string? GetInstantPaymentTransactionReport { get; set; }
+    }
+    public class ConfirmationPayeeReportParams
+    {
+        public string? GetConfirmationPayeeReport { get; set; }
+    }
+    public class AccountBalanceSummaryReportParams
+    {
+        public string? GetAccountBalanceSummaryReport { get; set; }
+    }
+    public class CustomerProfileReportParams
+    {
+        public string? GetCustomerProfileReport { get; set; }
+    }
+
 }

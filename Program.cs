@@ -16,6 +16,11 @@ builder.Services.Configure<DataBaseConnectionParams>(builder.Configuration.GetSe
 builder.Services.Configure<ServiceParams>(builder.Configuration.GetSection("ServiceParams"));
 
 
+builder.Services.ConfigureSwaggerGen(options =>
+{
+    options.SupportNonNullableReferenceTypes();
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -60,6 +65,14 @@ builder.Services.AddTransient<ConnectCustom>();
 builder.Services.AddTransient<IReportsService, ReportsService>();
 builder.Services.AddTransient<IDataSharingReportService, DataSharingReportService>();
 builder.Services.AddTransient<IServiceInitiationReportService, ServiceInitiationReportService>();
+
+builder.Services.AddTransient<IConsentManagementReportService, ConsentManagementReportService>();
+builder.Services.AddTransient<IInstantPaymentTransactionReportService, InstantPaymentTransactionReportService>();
+builder.Services.AddTransient<IConfirmationPayeeReportService, ConfirmationPayeeReportService>();
+builder.Services.AddTransient<IAccountBalanceSummaryReportService, AccountBalanceSummaryReportService>();
+builder.Services.AddTransient<ICustomerProfileReportService, CustomerProfileReportService>();
+
+
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();

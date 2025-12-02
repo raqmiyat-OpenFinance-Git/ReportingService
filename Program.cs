@@ -66,11 +66,19 @@ builder.Services.AddTransient<IReportsService, ReportsService>();
 builder.Services.AddTransient<IDataSharingReportService, DataSharingReportService>();
 builder.Services.AddTransient<IServiceInitiationReportService, ServiceInitiationReportService>();
 
+
 builder.Services.AddTransient<IConsentManagementReportService, ConsentManagementReportService>();
 builder.Services.AddTransient<IInstantPaymentTransactionReportService, InstantPaymentTransactionReportService>();
 builder.Services.AddTransient<IConfirmationPayeeReportService, ConfirmationPayeeReportService>();
 builder.Services.AddTransient<IAccountBalanceSummaryReportService, AccountBalanceSummaryReportService>();
 builder.Services.AddTransient<ICustomerProfileReportService, CustomerProfileReportService>();
+
+
+builder.Services.AddTransient<IStandingOrderReportService, StandingOrderReportService>();
+builder.Services.AddTransient<IScheduledPaymentReportService, ScheduledPaymentReportService>();
+builder.Services.AddTransient<IBeneficiaryManagementReportService, BeneficiaryManagementReportService>();
+builder.Services.AddTransient<ITransactionStatusReportService, TransactionStatusReportService>();
+
 
 
 builder.Services.AddHealthChecks();

@@ -11,6 +11,12 @@
         public ConfirmationPayeeReportParams? confirmationPayeeReportParams { get; set; }
         public AccountBalanceSummaryReportParams? accountBalanceSummaryReportParams { get; set; }
         public CustomerProfileReportParams? customerProfileReportParams { get; set; }
+        public StandingOrderReportParams? standingOrderReportParams { get; set; }  
+        public ScheduledPaymentReportParams? scheduledPaymentReportParams { get; set; }
+
+        public BeneficiaryManagementReportParams? beneficiaryManagementReportParams { get; set; }
+
+        public TransactionStatusReportParams? transactionStatusReportParams { get; set; }
     }
     public class ConsentSPParams
     {
@@ -64,5 +70,25 @@
     {
         public string? GetCustomerProfileReport { get; set; }
     }
+    public class StandingOrderReportParams
+    {
+        public string? GetStandingOrderReport { get; set; }
+    }
+    public class ScheduledPaymentReportParams
+    {
+        public string? GetScheduledPaymentReport { get; set; }
+    }
+    public class BeneficiaryManagementReportParams
+    {
+        public string? GetBeneficiaryManagementReport { get; set; } 
+    }
+    public class TransactionStatusReportParams
+    {
+        public string? GetTransactionStatusReport { get; set; }
+    }
+
+
+
+
 
 }

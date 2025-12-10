@@ -80,6 +80,11 @@ builder.Services.AddTransient<IBeneficiaryManagementReportService, BeneficiaryMa
 builder.Services.AddTransient<ITransactionStatusReportService, TransactionStatusReportService>();
 
 
+builder.Services.AddTransient<IVariableRecurringPaymentReportService, VariableRecurringPaymentReportService>();
+builder.Services.AddTransient<IFixedRecurringPaymentReportService, FixedRecurringPaymentReportService>();
+builder.Services.AddTransient<IRefundTransactionsReportService, RefundTransactionsReportService>();
+builder.Services.AddTransient<IFutureDatePaymentsReportService, FutureDatePaymentsReportService>();
+
 
 builder.Services.AddHealthChecks();
 

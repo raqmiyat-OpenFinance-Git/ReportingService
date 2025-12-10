@@ -17,6 +17,12 @@
         public BeneficiaryManagementReportParams? beneficiaryManagementReportParams { get; set; }
 
         public TransactionStatusReportParams? transactionStatusReportParams { get; set; }
+        public VariableRecurringPaymentReportParams? variableRecurringPaymentReportParams { get; set; }
+        public FixedRecurringPaymentReportParams? fixedRecurringPaymentReportParams { get; set; }
+        public RefundTransactionsReportParams? refundTransactionsReportParams { get; set; }
+
+        public FutureDatePaymentsReportParams? futureDatePaymentsReportParams { get; set; }
+
     }
     public class ConsentSPParams
     {
@@ -86,7 +92,23 @@
     {
         public string? GetTransactionStatusReport { get; set; }
     }
+    public class VariableRecurringPaymentReportParams
+    {
+        public string? GetVariableRecurringPaymentReport { get; set; }
+    }
+    public class FixedRecurringPaymentReportParams
+    {
+        public string? GetFixedRecurringPaymentReport { get; set; }
+    }
+    public class RefundTransactionsReportParams
+    {
+        public string? GetRefundTransactionsReport { get; set; }
+    }
+    public class FutureDatePaymentsReportParams
+    {
+        public string? GetFutureDatePaymentsReport { get; set; }
 
+    }
 
 
 

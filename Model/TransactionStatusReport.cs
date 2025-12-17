@@ -6,6 +6,7 @@
         public string? AccountId { get; set; }
         public string? TransactionCode { get; set; }
         public string? TransactionType { get; set; }
+        public string? SubTransactionType { get; set; }
         public string? Status { get; set; }
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }

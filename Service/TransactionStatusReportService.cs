@@ -37,6 +37,7 @@ namespace ReportingService.Service
                 parameters.Add("@AccountId", query?.AccountId);
                 parameters.Add("@TransactionCode", query?.TransactionCode);
                 parameters.Add("@TransactionType", query?.TransactionType);
+                parameters.Add("@SubTransactionType", query?.SubTransactionType);
                 parameters.Add("@Status", query?.Status);
 
 

@@ -86,22 +86,22 @@ namespace ReportingService.Service
                 parameters.Add("@TemplateId", templateId, DbType.Int32);
                 parameters.Add("@Module", Module, DbType.String);
 
-                if (Module == "Consent")
-                {
+                //if (Module == "Consent")
+                //{
                     ConsentEvent_report.ConsentReportField =
                         _idbConnection.Query<ConsentReportFields>(
                             _storedProcedureParams.Value.consentSPParams!.GET_Template_Details!,
                             parameters,
                             commandType: CommandType.StoredProcedure).FirstOrDefault();
-                }
-                else if (Module == "DataSharing")
-                {
-                    ConsentEvent_report.ConsentReportField =
-                        _idbConnection.Query<ConsentReportFields>(
-                            _storedProcedureParams.Value.consentSPParams!.GET_Template_Details!,
-                            parameters,
-                            commandType: CommandType.StoredProcedure).FirstOrDefault();
-                }
+                //}
+                //else if (Module == "DataSharing")
+                //{
+                //    ConsentEvent_report.ConsentReportField =
+                //        _idbConnection.Query<ConsentReportFields>(
+                //            _storedProcedureParams.Value.consentSPParams!.GET_Template_Details!,
+                //            parameters,
+                //            commandType: CommandType.StoredProcedure).FirstOrDefault();
+                //}
             }
             catch (Exception ex)
             {
@@ -125,27 +125,27 @@ namespace ReportingService.Service
                 parameters.Add("@DeleteId", deleteId, DbType.Int32);
                 parameters.Add("@OutputStatus", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                if (Module == "Consent")
-                {
+                //if (Module == "Consent")
+                //{
                     _idbConnection.Query<int>(
                         _storedProcedureParams.Value.consentSPParams!.DeleteTemplate_Consent!,
                         parameters,
                         commandType: CommandType.StoredProcedure);
-                }
-                else if (Module == "Service Initiation")
-                {
-                    _idbConnection.Query<int>(
-                        _storedProcedureParams.Value.consentSPParams!.DeleteTemplate_Consent!,
-                        parameters,
-                        commandType: CommandType.StoredProcedure);
-                }
-                else if (Module == "Data Sharing")
-                {
-                    _idbConnection.Query<int>(
-                        _storedProcedureParams.Value.consentSPParams!.DeleteTemplate_Consent!,
-                        parameters,
-                        commandType: CommandType.StoredProcedure);
-                }
+                //}
+                //else if (Module == "Service Initiation")
+                //{
+                //    _idbConnection.Query<int>(
+                //        _storedProcedureParams.Value.consentSPParams!.DeleteTemplate_Consent!,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                //}
+                //else if (Module == "Data Sharing")
+                //{
+                //    _idbConnection.Query<int>(
+                //        _storedProcedureParams.Value.consentSPParams!.DeleteTemplate_Consent!,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                //}
 
                 outputDesc = parameters.Get<int>("@OutputStatus");
             }
@@ -163,55 +163,55 @@ namespace ReportingService.Service
             _logger.LogInfo("Reports", "SaveReportTemplate", "----------Start----------");
             string returnValue = "";
 
-            if (ConsentEventReport.Module == "Consent")
-            {
+            //if (ConsentEventReport.ConsentType == "Consent")
+            //{
                 try
                 {
                     //using IDbConnection db = new SqlConnection(ConfigManager.getDBConnection());
                     var parameters = new DynamicParameters();
-                    parameters.Add("FromDate", ConsentEventReport.ConsentReportField!.FromDate, DbType.DateTime);
-                    parameters.Add("Todate", ConsentEventReport.ConsentReportField!.Todate, DbType.DateTime);
-                    parameters.Add("Columndetails", ConsentEventReport.ConsentReportField!.Columndetails, DbType.String);
-                    parameters.Add("TemplateName", ConsentEventReport.ConsentReportField!.TemplateName, DbType.String);
-                    parameters.Add("ReportName", ConsentEventReport.ConsentReportField!.ReportName, DbType.String);
-                    parameters.Add("CorrelationId", ConsentEventReport.ConsentReportField!.CorrelationId, DbType.String);
-                    parameters.Add("RequestType", ConsentEventReport.ConsentReportField!.RequestType, DbType.String);
-                    parameters.Add("BaseConsentId", ConsentEventReport.ConsentReportField!.BaseConsentId, DbType.String);
-                    parameters.Add("ExpirationDateTime", ConsentEventReport.ConsentReportField!.ExpirationDateTime, DbType.DateTime);
-                    parameters.Add("TransactionFromDateTime", ConsentEventReport.ConsentReportField!.TransactionFromDateTime, DbType.DateTime);
-                    parameters.Add("TransactionToDateTime", ConsentEventReport.ConsentReportField!.TransactionToDateTime, DbType.DateTime);
-                    parameters.Add("ConsentId", ConsentEventReport.ConsentReportField!.ConsentId, DbType.String);
-                    parameters.Add("AccountType", ConsentEventReport.ConsentReportField!.AccountType, DbType.String);
-                    parameters.Add("AccountSubType", ConsentEventReport.ConsentReportField!.AccountSubType, DbType.String);
-                    parameters.Add("Permissions", ConsentEventReport.ConsentReportField!.Permissions, DbType.String);
-                    parameters.Add("Purpose", ConsentEventReport.ConsentReportField!.Purpose, DbType.String);
-                    parameters.Add("RevokedBy", ConsentEventReport.ConsentReportField!.RevokedBy, DbType.String);
-                    parameters.Add("OnBehalfOf_TradingName", ConsentEventReport.ConsentReportField!.OnBehalfOf_TradingName, DbType.String);
-                    parameters.Add("StatusFromConsentBody", ConsentEventReport.ConsentReportField!.StatusFromConsentBody, DbType.String);
-                    parameters.Add("OnBehalfOf_LegalName", ConsentEventReport.ConsentReportField!.OnBehalfOf_LegalName, DbType.String);
-                    parameters.Add("OnBehalfOf_IdentifierType", ConsentEventReport.ConsentReportField!.OnBehalfOf_IdentifierType, DbType.String);
-                    parameters.Add("OnBehalfOf_Identifier", ConsentEventReport.ConsentReportField!.OnBehalfOf_Identifier, DbType.String);
-                    parameters.Add("Billing_UserType", ConsentEventReport.ConsentReportField!.Billing_UserType, DbType.String);
-                    parameters.Add("Billing_Purpose", ConsentEventReport.ConsentReportField!.Billing_Purpose, DbType.String);
-                    parameters.Add("Billing_IsLargeCorporate", ConsentEventReport.ConsentReportField!.Billing_IsLargeCorporate, DbType.Boolean);
-                    parameters.Add("TotalRequiredAuthorizations", ConsentEventReport.ConsentReportField!.TotalRequiredAuthorizations, DbType.Int64);
-                    parameters.Add("AuthorizersJson", ConsentEventReport.ConsentReportField!.AuthorizersJson, DbType.String);
-                    parameters.Add("Tpp_ClientId", ConsentEventReport.ConsentReportField!.Tpp_ClientId, DbType.String);
-                    parameters.Add("Tpp_TppId", ConsentEventReport.ConsentReportField!.Tpp_TppId, DbType.String);
-                    parameters.Add("Tpp_TppName", ConsentEventReport.ConsentReportField!.Tpp_TppName, DbType.String);
-                    parameters.Add("Tpp_SoftwareStatementId", ConsentEventReport.ConsentReportField!.Tpp_SoftwareStatementId, DbType.String);
-                    parameters.Add("Tpp_DirectoryRecord", ConsentEventReport.ConsentReportField!.Tpp_DirectoryRecord, DbType.String);
-                    parameters.Add("Tpp_OrgId", ConsentEventReport.ConsentReportField!.Tpp_OrgId, DbType.String);
-                    parameters.Add("Ssa_ClientName", ConsentEventReport.ConsentReportField!.Ssa_ClientName, DbType.String);
-                    parameters.Add("Ssa_ClientUri", ConsentEventReport.ConsentReportField!.Ssa_ClientUri, DbType.String);
-                    parameters.Add("Ssa_LogoUri", ConsentEventReport.ConsentReportField!.Ssa_LogoUri, DbType.String);
-                    parameters.Add("Ssa_JwksUri", ConsentEventReport.ConsentReportField!.Ssa_JwksUri, DbType.String);
-                    parameters.Add("Ssa_ClientId", ConsentEventReport.ConsentReportField!.Ssa_ClientId, DbType.String);
-                    parameters.Add("Ssa_Roles", ConsentEventReport.ConsentReportField!.Ssa_Roles, DbType.String);
-                    parameters.Add("Ssa_SectorIdentifierUri", ConsentEventReport.ConsentReportField!.Ssa_SectorIdentifierUri, DbType.String);
-                    parameters.Add("Ssa_ApplicationType", ConsentEventReport.ConsentReportField!.Ssa_ApplicationType, DbType.String);
-                    parameters.Add("Ssa_OrganisationId", ConsentEventReport.ConsentReportField!.Ssa_OrganisationId, DbType.String);
-                    parameters.Add("Ssa_RedirectUris", ConsentEventReport.ConsentReportField!.Ssa_RedirectUris, DbType.String);
+                    parameters.Add("FromDate", ConsentEventReport.ConsentReportField!.FromDate, dbType: DbType.DateTime);
+                    parameters.Add("ToDate", ConsentEventReport.ConsentReportField!.Todate, dbType: DbType.DateTime);
+                    parameters.Add("Columndetails", ConsentEventReport.ConsentReportField!.Columndetails, dbType: DbType.String);
+                    parameters.Add("TemplateName", ConsentEventReport.ConsentReportField!.TemplateName, dbType: DbType.String);
+                    parameters.Add("ReportName", ConsentEventReport.ConsentReportField!.ReportName, dbType: DbType.String);
+                    parameters.Add("CorrelationId", ConsentEventReport.ConsentReportField!.CorrelationId, dbType: DbType.String);
+                    parameters.Add("Id", ConsentEventReport.ConsentReportField!.Id, dbType: DbType.String);
+                    parameters.Add("ConsentGroupId", ConsentEventReport.ConsentReportField!.ConsentGroupId, dbType: DbType.String);
+                    parameters.Add("RequestUrl", ConsentEventReport.ConsentReportField!.RequestUrl, dbType: DbType.String);
+                    parameters.Add("ConsentType", ConsentEventReport.ConsentType, dbType: DbType.String);
+                    parameters.Add("RequestType", ConsentEventReport.ConsentReportField!.RequestType, dbType: DbType.String);
+                    parameters.Add("ConsentId", ConsentEventReport.ConsentReportField!.ConsentId, dbType: DbType.String);
+                    parameters.Add("BaseConsentId", ConsentEventReport.ConsentReportField!.BaseConsentId, dbType: DbType.String);
+                    parameters.Add("CurrentStatus", ConsentEventReport.ConsentReportField!.CurrentStatus, dbType: DbType.String);
+                    parameters.Add("Status", ConsentEventReport.ConsentReportField!.Status, dbType: DbType.String);
+                    parameters.Add("ExpirationDateTime", ConsentEventReport.ConsentReportField!.ExpirationDateTime, dbType: DbType.DateTime);
+                    parameters.Add("AuthorizationChannel", ConsentEventReport.ConsentReportField!.AuthorizationChannel, dbType: DbType.String);
+                    parameters.Add("InteractionId", ConsentEventReport.ConsentReportField!.InteractionId, dbType: DbType.String);
+                    parameters.Add("UpdatedAt", ConsentEventReport.ConsentReportField!.UpdatedAt, dbType: DbType.DateTime);
+                    parameters.Add("CreationDateTime", ConsentEventReport.ConsentReportField!.CreationDateTime, dbType: DbType.DateTime);
+                    parameters.Add("LastUpdatedDateTime", ConsentEventReport.ConsentReportField!.LastUpdatedDateTime, dbType: DbType.DateTime);
+                    parameters.Add("AccountType", ConsentEventReport.ConsentReportField!.AccountType, dbType: DbType.String);
+                    parameters.Add("AccountSubType", ConsentEventReport.ConsentReportField!.AccountSubType, dbType: DbType.String);
+                    parameters.Add("Permissions", ConsentEventReport.ConsentReportField!.Permissions, dbType: DbType.String);
+                    parameters.Add("TppClientId", ConsentEventReport.ConsentReportField!.TppClientId, dbType: DbType.String);
+                    parameters.Add("TppTppId", ConsentEventReport.ConsentReportField!.TppId, dbType: DbType.String);
+                    parameters.Add("TppTppName", ConsentEventReport.ConsentReportField!.TppName, dbType: DbType.String);
+                    parameters.Add("SoftwareStatementId", ConsentEventReport.ConsentReportField!.SoftwareStatementId, dbType: DbType.String);
+                    parameters.Add("DirectoryRecord", ConsentEventReport.ConsentReportField!.DirectoryRecord, dbType: DbType.String);
+                    parameters.Add("DecodedSsa", ConsentEventReport.ConsentReportField!.DecodedSsa, dbType: DbType.String);
+                    parameters.Add("OrgId", ConsentEventReport.ConsentReportField!.OrgId, dbType: DbType.String);
+                    parameters.Add("ParId", ConsentEventReport.ConsentReportField!.ParId, dbType: DbType.String);
+                    parameters.Add("RarType", ConsentEventReport.ConsentReportField!.RarType, dbType: DbType.String);
+                    parameters.Add("StandardVersion", ConsentEventReport.ConsentReportField!.StandardVersion, dbType: DbType.String);
+                    parameters.Add("PsuIdentifiersUserId", ConsentEventReport.ConsentReportField!.PsuIdentifiersUserId, dbType: DbType.String);
+                    parameters.Add("AccountIds", ConsentEventReport.ConsentReportField!.AccountIds, dbType: DbType.String);
+                    parameters.Add("ConsentBody", ConsentEventReport.ConsentReportField!.ConsentBody, dbType: DbType.String);
+                    parameters.Add("OzoneSupplementaryInformation", ConsentEventReport.ConsentReportField!.OzoneSupplementaryInformation, dbType: DbType.String);
+                    parameters.Add("SupplementaryInformation", ConsentEventReport.ConsentReportField!.SupplementaryInformation, dbType: DbType.String);
+                    parameters.Add("PaymentContext", ConsentEventReport.ConsentReportField!.PaymentContext, dbType: DbType.String);
+                    parameters.Add("ConnectToken", ConsentEventReport.ConsentReportField!.ConnectToken, dbType: DbType.String);
+                    parameters.Add("PaymentCategory", ConsentEventReport.ConsentReportField!.PaymentCategory, dbType: DbType.String);
+                    parameters.Add("PaymentType", ConsentEventReport.ConsentReportField!.PaymentType, dbType: DbType.String);
                     parameters.Add("Output_Desc", dbType: DbType.String, direction: ParameterDirection.Output, size: 200);
                         _idbConnection.Execute(
                    _storedProcedureParams.Value.consentSPParams!.SaveTemplate_Consent!,
@@ -225,7 +225,7 @@ namespace ReportingService.Service
                     return returnValue;
                 }
 
-            }
+            //}
             
             return returnValue;
         }
@@ -244,43 +244,43 @@ namespace ReportingService.Service
                     parameters.Add("TemplateName", consentReportFields.TemplateName, dbType: DbType.String);
                     parameters.Add("ReportName", consentReportFields.ReportName, dbType: DbType.String);
                     parameters.Add("CorrelationId", consentReportFields.CorrelationId, dbType: DbType.String);
+                    parameters.Add("Id", consentReportFields.Id, dbType: DbType.String);
+                    parameters.Add("ConsentGroupId", consentReportFields.ConsentGroupId, dbType: DbType.String);
+                    parameters.Add("RequestUrl", consentReportFields.RequestUrl, dbType: DbType.String);
+                    parameters.Add("ConsentType", consentReportFields.ConsentType, dbType: DbType.String);
                     parameters.Add("RequestType", consentReportFields.RequestType, dbType: DbType.String);
-                    parameters.Add("BaseConsentId", consentReportFields.BaseConsentId, dbType: DbType.String);
-                    parameters.Add("ExpirationDateTime", consentReportFields.ExpirationDateTime, dbType: DbType.DateTime);
-                    parameters.Add("TransactionFromDateTime", consentReportFields.TransactionFromDateTime, dbType: DbType.DateTime);
-                    parameters.Add("TransactionToDateTime", consentReportFields.TransactionToDateTime, dbType: DbType.DateTime);
                     parameters.Add("ConsentId", consentReportFields.ConsentId, dbType: DbType.String);
+                    parameters.Add("BaseConsentId", consentReportFields.BaseConsentId, dbType: DbType.String);
+                    parameters.Add("CurrentStatus", consentReportFields.CurrentStatus, dbType: DbType.String);
+                    parameters.Add("Status", consentReportFields.Status, dbType: DbType.String);
+                    parameters.Add("ExpirationDateTime", consentReportFields.ExpirationDateTime, dbType: DbType.DateTime);
+                    parameters.Add("AuthorizationChannel", consentReportFields.AuthorizationChannel, dbType: DbType.String);
+                    parameters.Add("InteractionId", consentReportFields.InteractionId, dbType: DbType.String);
+                    parameters.Add("UpdatedAt", consentReportFields.UpdatedAt, dbType: DbType.DateTime);
+                    parameters.Add("CreationDateTime", consentReportFields.CreationDateTime, dbType: DbType.DateTime);
+                    parameters.Add("LastUpdatedDateTime", consentReportFields.LastUpdatedDateTime, dbType: DbType.DateTime);
                     parameters.Add("AccountType", consentReportFields.AccountType, dbType: DbType.String);
                     parameters.Add("AccountSubType", consentReportFields.AccountSubType, dbType: DbType.String);
                     parameters.Add("Permissions", consentReportFields.Permissions, dbType: DbType.String);
-                    parameters.Add("Purpose", consentReportFields.Purpose, dbType: DbType.String);
-                    parameters.Add("StatusFromConsentBody", consentReportFields.StatusFromConsentBody, dbType: DbType.String);
-                    parameters.Add("RevokedBy", consentReportFields.RevokedBy, dbType: DbType.String);
-                    parameters.Add("OnBehalfOf_TradingName", consentReportFields.OnBehalfOf_TradingName, dbType: DbType.String);
-                    parameters.Add("OnBehalfOf_LegalName", consentReportFields.OnBehalfOf_LegalName, dbType: DbType.String);
-                    parameters.Add("OnBehalfOf_IdentifierType", consentReportFields.OnBehalfOf_IdentifierType, dbType: DbType.String);
-                    parameters.Add("OnBehalfOf_Identifier", consentReportFields.OnBehalfOf_Identifier, dbType: DbType.String);
-                    parameters.Add("Billing_UserType", consentReportFields.Billing_UserType, dbType: DbType.String);
-                    parameters.Add("Billing_Purpose", consentReportFields.Billing_Purpose, dbType: DbType.String);
-                    parameters.Add("Billing_IsLargeCorporate", consentReportFields.Billing_IsLargeCorporate, dbType: DbType.Boolean);
-                    parameters.Add("TotalRequiredAuthorizations", consentReportFields.TotalRequiredAuthorizations, dbType: DbType.Int32);
-                    parameters.Add("AuthorizersJson", consentReportFields.AuthorizersJson, dbType: DbType.String);
-                    parameters.Add("Tpp_ClientId", consentReportFields.Tpp_ClientId, dbType: DbType.String);
-                    parameters.Add("Tpp_TppId", consentReportFields.Tpp_TppId, dbType: DbType.String);
-                    parameters.Add("Tpp_TppName", consentReportFields.Tpp_TppName, dbType: DbType.String);
-                    parameters.Add("Tpp_SoftwareStatementId", consentReportFields.Tpp_SoftwareStatementId, dbType: DbType.String);
-                    parameters.Add("Tpp_DirectoryRecord", consentReportFields.Tpp_DirectoryRecord, dbType: DbType.String);
-                    parameters.Add("Tpp_OrgId", consentReportFields.Tpp_OrgId, dbType: DbType.String);
-                    parameters.Add("Ssa_ClientName", consentReportFields.Ssa_ClientName, dbType: DbType.String);
-                    parameters.Add("Ssa_ClientUri", consentReportFields.Ssa_ClientUri, dbType: DbType.String);
-                    parameters.Add("Ssa_LogoUri", consentReportFields.Ssa_LogoUri, dbType: DbType.String);
-                    parameters.Add("Ssa_JwksUri", consentReportFields.Ssa_JwksUri, dbType: DbType.String);
-                    parameters.Add("Ssa_ClientId", consentReportFields.Ssa_ClientId, dbType: DbType.String);
-                    parameters.Add("Ssa_Roles", consentReportFields.Ssa_Roles, dbType: DbType.String);
-                    parameters.Add("Ssa_SectorIdentifierUri", consentReportFields.Ssa_SectorIdentifierUri, dbType: DbType.String);
-                    parameters.Add("Ssa_ApplicationType", consentReportFields.Ssa_ApplicationType, dbType: DbType.String);
-                    parameters.Add("Ssa_OrganisationId", consentReportFields.Ssa_OrganisationId, dbType: DbType.String);
-                    parameters.Add("Ssa_RedirectUris", consentReportFields.Ssa_RedirectUris, dbType: DbType.String);
+                    parameters.Add("TppClientId", consentReportFields.TppClientId, dbType: DbType.String);
+                    parameters.Add("TppTppId", consentReportFields.TppId, dbType: DbType.String);
+                    parameters.Add("TppTppName", consentReportFields.TppName, dbType: DbType.String);
+                    parameters.Add("SoftwareStatementId", consentReportFields.SoftwareStatementId, dbType: DbType.String);
+                    parameters.Add("DirectoryRecord", consentReportFields.DirectoryRecord, dbType: DbType.String);
+                    parameters.Add("DecodedSsa", consentReportFields.DecodedSsa, dbType: DbType.String);
+                    parameters.Add("OrgId", consentReportFields.OrgId, dbType: DbType.String);
+                    parameters.Add("ParId", consentReportFields.ParId, dbType: DbType.String);
+                    parameters.Add("RarType", consentReportFields.RarType, dbType: DbType.String);
+                    parameters.Add("StandardVersion", consentReportFields.StandardVersion, dbType: DbType.String);
+                    parameters.Add("PsuIdentifiersUserId", consentReportFields.PsuIdentifiersUserId, dbType: DbType.String);
+                    parameters.Add("AccountIds", consentReportFields.AccountIds, dbType: DbType.String);
+                    parameters.Add("ConsentBody", consentReportFields.ConsentBody, dbType: DbType.String);
+                    parameters.Add("OzoneSupplementaryInformation", consentReportFields.OzoneSupplementaryInformation, dbType: DbType.String);
+                    parameters.Add("SupplementaryInformation", consentReportFields.SupplementaryInformation, dbType: DbType.String);
+                    parameters.Add("PaymentContext", consentReportFields.PaymentContext, dbType: DbType.String);
+                    parameters.Add("ConnectToken", consentReportFields.ConnectToken, dbType: DbType.String);
+                    parameters.Add("PaymentCategory", consentReportFields.PaymentCategory, dbType: DbType.String);
+                    parameters.Add("PaymentType", consentReportFields.PaymentType, dbType: DbType.String);
 
                 return (await _idbConnection.QueryAsync<dynamic>(
             _storedProcedureParams.Value.consentSPParams!.GET_Consent_Report!,

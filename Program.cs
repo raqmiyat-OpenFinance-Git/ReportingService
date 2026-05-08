@@ -84,6 +84,7 @@ builder.Services.AddTransient<IVariableRecurringPaymentReportService, VariableRe
 builder.Services.AddTransient<IFixedRecurringPaymentReportService, FixedRecurringPaymentReportService>();
 builder.Services.AddTransient<IRefundTransactionsReportService, RefundTransactionsReportService>();
 builder.Services.AddTransient<IFutureDatePaymentsReportService, FutureDatePaymentsReportService>();
+builder.Services.AddTransient<IBulkBatchPaymentReportService, BulkBatchPaymentReportService>();
 
 
 builder.Services.AddHealthChecks();

@@ -19,6 +19,7 @@
         public TransactionStatusReportParams? transactionStatusReportParams { get; set; }
         public VariableRecurringPaymentReportParams? variableRecurringPaymentReportParams { get; set; }
         public FixedRecurringPaymentReportParams? fixedRecurringPaymentReportParams { get; set; }
+        public BulkBatchPaymentReportParams? bulkbatchPaymentReportParams { get; set; }
         public RefundTransactionsReportParams? refundTransactionsReportParams { get; set; }
 
         public FutureDatePaymentsReportParams? futureDatePaymentsReportParams { get; set; }
@@ -99,6 +100,11 @@
     public class FixedRecurringPaymentReportParams
     {
         public string? GetFixedRecurringPaymentReport { get; set; }
+    }
+
+    public class BulkBatchPaymentReportParams
+    {
+        public string? GetBulkBatchPaymentReport { get; set; }
     }
     public class RefundTransactionsReportParams
     {

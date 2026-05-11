@@ -14,7 +14,7 @@
     public class FixedRecurringPaymentReport
     {
         // Request
-        public long PaymentRequestId { get; set; }
+     //   public long PaymentRequestId { get; set; }
         public string? PaymentConsentId { get; set; }
         public string? PaymentCategory { get; set; }
         public string? PaymentType { get; set; }
@@ -24,8 +24,13 @@
         // Open Finance / Ozone Metadata
         public string? O3ProviderId { get; set; }
         public string? O3AspspId { get; set; }
-        public string? O3CallerOrgId { get; set; }
-        public string? O3CallerClientId { get; set; }
+        //public string? O3CallerOrgId { get; set; }
+        //public string? O3CallerClientId { get; set; }
+
+        public string? TppName { get; set; }
+        public string? TppID { get; set; }
+
+
         public string? O3CallerSoftwareStatementId { get; set; }
         public string? O3ApiUri { get; set; }
         public string? O3ApiOperation { get; set; }

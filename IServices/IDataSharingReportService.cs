@@ -7,7 +7,7 @@ namespace ReportingService.IServices
     {
         int DataSharingReportDeleteTemplate(int deleteId, string Module);
         Task<List<dynamic>> GenerateDataSharingReport(DataSharingReportFields dataSharingReportFields);
-        Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string module,string templateName);
+        Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string module,string templateName, string type);
         DataSharingReport GetDataSharingReportTemplateData(int templateId, string module);
         Task<List<DataSharingTemplateList>> GetDataSharingReportTemplateList(string module);
         Task<List<DataSharingReportTemplate>> GetDataSharingReportTemplates();

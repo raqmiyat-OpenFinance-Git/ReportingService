@@ -18,6 +18,7 @@
     {
         public int TemplateId { get; set; }
         public string? TemplateName { get; set; }
+        public string? Type { get; set; }
     }
     public class DataSharingReportTemplate
     {
@@ -40,6 +41,7 @@
         public string? TemplateName { get; set; }
         public string? ReportName { get; set; }
         public string? CorrelationId { get; set; }
+        public string? DataSharingType { get; set; }
 
         public string? AccountId { get; set; }
         public string? AccountType { get; set; }

@@ -39,13 +39,13 @@ namespace ReportingService.Controllers
 
         }
         [HttpGet("GetDataSharingReportColumnNames")]
-        public Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string Module, string templateName)
+        public Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string Module, string templateName, string type)
         {
             _logger.LogInfo("DataSharingReportController", "GetDataSharingReportColumnNames", "----------Start----------");
             Task<List<DataSharingColumnInfo>> columnInfos = null!;
             try
             {
-                columnInfos = _reports.GetDataSharingReportColumnNames(Module, templateName);
+                columnInfos = _reports.GetDataSharingReportColumnNames(Module, templateName, type);
 
             }
             catch (Exception ex)

@@ -32,7 +32,7 @@ namespace ReportingService.Service
                 var parameters = new DynamicParameters();
                 parameters.Add("@DeleteId", deleteId, DbType.Int32);
                 parameters.Add("@OutputStatus", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                if (Module == "Data Sharing")
+                if (Module == "Data Sharing" || Module == "DataSharing")
                 {
                     _idbConnection.Query<int>(
                         _storedProcedureParams.Value.dataSharingReportParams!.DataSharingReportDeleteTemplate!,
@@ -64,6 +64,7 @@ namespace ReportingService.Service
                 parameters.Add("ToDate", dataSharingReportFields.ToDate, dbType: DbType.DateTime);
                 parameters.Add("Columndetails", dataSharingReportFields.Columndetails, dbType: DbType.String);
                 parameters.Add("TemplateName", dataSharingReportFields.TemplateName, dbType: DbType.String);
+                parameters.Add("DataSharingType", dataSharingReportFields.DataSharingType, dbType: DbType.String);
                 parameters.Add("ReportName", dataSharingReportFields.ReportName, dbType: DbType.String);
                 parameters.Add("CorrelationId", dataSharingReportFields.CorrelationId, dbType: DbType.String);
                 parameters.Add("AccountId", dataSharingReportFields.AccountId, dbType: DbType.String);
@@ -85,7 +86,7 @@ namespace ReportingService.Service
             return ConsentReport;
         }
 
-        public async Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string module,string templateName)
+        public async Task<List<DataSharingColumnInfo>> GetDataSharingReportColumnNames(string module,string templateName, string type)
         {
             List<DataSharingColumnInfo> columnInfos = new List<DataSharingColumnInfo>();
             try
@@ -93,7 +94,7 @@ namespace ReportingService.Service
                 var parameters = new DynamicParameters();
                 parameters.Add("@Module", module);
                 parameters.Add("@TemplateName", templateName);
-
+                parameters.Add("@Type", type);
                 columnInfos = (await _idbConnection.QueryAsync<DataSharingColumnInfo>(
                     _storedProcedureParams.Value.dataSharingReportParams!.GetDataSharingReportColumnNames!,
                     parameters,
@@ -191,6 +192,7 @@ namespace ReportingService.Service
                     parameters.Add("TemplateName", dataSharingReport.dataSharingReportField!.TemplateName, DbType.String);
                     parameters.Add("ReportName", dataSharingReport.dataSharingReportField!.ReportName, DbType.String);
                     parameters.Add("CorrelationId", dataSharingReport.dataSharingReportField!.CorrelationId, DbType.String);
+                    parameters.Add("DataSharingType", dataSharingReport.dataSharingReportField!.DataSharingType, DbType.String);
                     parameters.Add("AccountId", dataSharingReport.dataSharingReportField.AccountId, dbType: DbType.String);
                     parameters.Add("AccountType", dataSharingReport.dataSharingReportField.AccountType, dbType: DbType.String);
                     parameters.Add("AccountSubType", dataSharingReport.dataSharingReportField.AccountSubType, dbType: DbType.String);

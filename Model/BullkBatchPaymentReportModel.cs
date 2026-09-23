@@ -18,7 +18,7 @@
 
     public class BullkBatchPaymentReport
     {
-        public long BulkPaymentRequestId { get; set; }
+        // public long BulkPaymentRequestId { get; set; }
         public long BulkPaymentConsentId { get; set; }
         public string? ConsentId { get; set; }
         public Guid CorrelationId { get; set; }
@@ -31,7 +31,7 @@
         public string? O3ApiOperation { get; set; }
         public string? O3ConsentId { get; set; }
         public string? O3CallerInteractionId { get; set; }
-       public string? O3OzoneInteractionId { get; set; }
+        public string? O3OzoneInteractionId { get; set; }
         public string? O3PsuIdentifier { get; set; }
         public string? FileType { get; set; }
         public string? FileHash { get; set; }

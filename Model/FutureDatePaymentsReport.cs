@@ -14,7 +14,7 @@
     public class FutureDatePaymentsReport
     {
         // Request
-        public long RequestId { get; set; }
+        // public long RequestId { get; set; }
         public Guid CorrelationId { get; set; }
         public string? PaymentCategory { get; set; }
         public string? PaymentType { get; set; }

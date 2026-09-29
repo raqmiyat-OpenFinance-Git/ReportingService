@@ -10,6 +10,10 @@
         public string? Status { get; set; }
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
+
+        public string? Columndetails { get; set; }
+        public string? TemplateName { get; set; }
+        public string? ReportName { get; set; }
     }
 
     public class TransactionStatusReport

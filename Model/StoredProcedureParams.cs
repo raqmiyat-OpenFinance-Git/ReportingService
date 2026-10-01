@@ -17,6 +17,7 @@
         public BeneficiaryManagementReportParams? beneficiaryManagementReportParams { get; set; }
 
         public TransactionStatusReportParams? transactionStatusReportParams { get; set; }
+        public PaymentTransactionReportParams? paymentTransactionReportParams { get; set; }
         public VariableRecurringPaymentReportParams? variableRecurringPaymentReportParams { get; set; }
         public FixedRecurringPaymentReportParams? fixedRecurringPaymentReportParams { get; set; }
         public BulkBatchPaymentReportParams? bulkbatchPaymentReportParams { get; set; }
@@ -92,6 +93,10 @@
     public class TransactionStatusReportParams
     {
         public string? GetTransactionStatusReport { get; set; }
+    }
+    public class PaymentTransactionReportParams
+    {
+        public string? GetPaymentTransactionReport { get; set; }
     }
     public class VariableRecurringPaymentReportParams
     {

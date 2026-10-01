@@ -78,7 +78,7 @@ builder.Services.AddTransient<IStandingOrderReportService, StandingOrderReportSe
 builder.Services.AddTransient<IScheduledPaymentReportService, ScheduledPaymentReportService>();
 builder.Services.AddTransient<IBeneficiaryManagementReportService, BeneficiaryManagementReportService>();
 builder.Services.AddTransient<ITransactionStatusReportService, TransactionStatusReportService>();
-
+builder.Services.AddTransient<IPaymentTransactionReportService, PaymentTransactionReportService>();
 
 builder.Services.AddTransient<IVariableRecurringPaymentReportService, VariableRecurringPaymentReportService>();
 builder.Services.AddTransient<IFixedRecurringPaymentReportService, FixedRecurringPaymentReportService>();

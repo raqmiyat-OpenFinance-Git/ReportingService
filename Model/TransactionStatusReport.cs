@@ -11,6 +11,7 @@
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
 
+        // Only if Report API needs these
         public string? Columndetails { get; set; }
         public string? TemplateName { get; set; }
         public string? ReportName { get; set; }
